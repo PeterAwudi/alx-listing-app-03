@@ -1,14 +1,27 @@
-import React from 'react';
-import Image from 'next/image';
+import BookingForm from "@/components/booking/BookingForm";
+import OrderSummary from "@/components/booking/OrderSummary";
+import CancellationPolicy from "@/components/booking/CancellationPolicy";
 
-const Hero = () => {
+export default function BookingPage() {
+  const bookingDetails = {
+    propertyName: "Villa Arrecife Beach House",
+    price: 7500,
+    bookingFee: 65,
+    totalNights: 3,
+    startDate: "24 August 2024",
+  };
+
   return (
-    <section>
-      <Image src="/hero-image.png" alt="Hero Image" width={600} height={400} className="object-cover rounded-md" />
-      <h1>Find your favorite place here!</h1>
-      <p>The best prices for over 2 million properties worldwide.</p>
-    </section>
-  );
-};
+    <div className="container mx-auto p-6">
+      {/* Responsive Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <BookingForm />
+        <OrderSummary bookingDetails={bookingDetails} />
+      </div>
 
-export default Hero;
+      {/* Cancellation Policy Section */}
+      <CancellationPolicy />
+    </div>
+
+  );
+}
